@@ -1,2 +1,2 @@
-- Jhonathan Delgado
+- Jose Luis Valencia, Jacobo Woodcock, Yorman Correa 
 - Alumnos de FPOE Gr80 2026-II
