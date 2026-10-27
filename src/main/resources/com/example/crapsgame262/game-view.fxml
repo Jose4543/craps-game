@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crapsgame262.controllers.GameController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crapsgame262.controllers.GameController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" style="-fx-background-color: BLACK; -fx-border-color: white; -fx-border-radius: 15;" text="?" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#onActionHelpButton" style="-fx-background-color: BLACK; -fx-border-color: white; -fx-border-radius: 15;" text="?" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -46,7 +46,7 @@
          <children>
             <Label text="Zona de Juego">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -55,7 +55,10 @@
                   <ImageView fx:id="dice2ImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedDropButton" text="Lanzar" />
+            <Button mnemonicParsing="false" onMouseClicked="#onMouseClickedDropButton" text="Lanzar">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -67,7 +70,7 @@
             </Label>
             <Label text="Resultados">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <GridPane>
@@ -84,11 +87,17 @@
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                   </Label>
                   <Label text="Punto:" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                   </Label>
                   <Label style="-fx-border-color: black;" text="00" GridPane.columnIndex="1">
                      <padding>
