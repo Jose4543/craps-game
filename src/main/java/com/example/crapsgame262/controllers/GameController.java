@@ -1,5 +1,7 @@
+
 package com.example.crapsgame262.controllers;
 
+import com.example.crapsgame262.models.Game;
 import com.example.crapsgame262.models.Dice;
 import com.example.crapsgame262.models.Player;
 import javafx.fxml.FXML;
@@ -12,6 +14,9 @@ public class GameController {
 
     private Player currentPlayer;
 
+    // Modelo del juego
+    private final Game game = new Game();
+
     @FXML
     private ImageView dice1ImageView;
 
@@ -20,6 +25,19 @@ public class GameController {
 
     @FXML
     private Label nicknameLabel;
+
+    // Estadísticas del juego
+    @FXML
+    private Label tiroLabel;
+
+    @FXML
+    private Label puntoLabel;
+
+    @FXML
+    private Label juegosGanadosLabel;
+
+    @FXML
+    private Label juegosPerdidosLabel;
 
     public Player getCurrentPlayer() {
         return currentPlayer;
@@ -32,9 +50,15 @@ public class GameController {
 
     @FXML
     void onMouseClickedDropButton(MouseEvent event) {
-        Dice dice1 = new Dice();
-        dice1.roll();
 
+        // Ejecutar la lógica del modelo
+        game.play();
+
+        // Obtener los dados del modelo
+        Dice dice1 = game.getDice1();
+        Dice dice2 = game.getDice2();
+
+        // Actualizar las imágenes de los dados
         dice1ImageView.setImage(
                 new Image(
                         getClass().getResourceAsStream(
@@ -43,9 +67,6 @@ public class GameController {
                 )
         );
 
-        Dice dice2 = new Dice();
-        dice2.roll();
-
         dice2ImageView.setImage(
                 new Image(
                         getClass().getResourceAsStream(
@@ -53,25 +74,24 @@ public class GameController {
                         )
                 )
         );
-    }
 
-    @FXML
-    private void onActionHelpButton() {
-        javafx.scene.control.Alert alert =
-                new javafx.scene.control.Alert(
-                        javafx.scene.control.Alert.AlertType.INFORMATION);
-
-        alert.setTitle("Craps Game - Ayuda");
-        alert.setHeaderText("Instrucciones del juego");
-        alert.setContentText(
-                "Se juega con dos dados.\n\n" +
-                        "En el primer lanzamiento, 7 u 11 significa ganar; " +
-                        "2, 3 o 12 significa perder es un Craps.\n\n" +
-                        "Si sale otro número, ese será tu punto. " +
-                        "Debes repetirlo antes de sacar un 7 para ganar."
+        // Actualizar las estadísticas en la vista
+        tiroLabel.setText(String.valueOf(game.getRoll()));
+        puntoLabel.setText(
+                game.getPoint() == 0
+                        ? "-"
+                        : String.valueOf(game.getPoint())
         );
-
-        alert.getDialogPane().setPrefSize(480, 350);
-        alert.showAndWait();
+        juegosGanadosLabel.setText(
+                String.valueOf(game.getGamesWon())
+        );
+        juegosPerdidosLabel.setText(
+                String.valueOf(game.getGamesLost())
+        );
+    }
+    @FXML
+    void onActionHelpButton() {
+        // Aquí se implementará la ayuda del juego.
     }
 }
+
