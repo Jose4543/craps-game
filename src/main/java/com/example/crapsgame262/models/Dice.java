@@ -8,7 +8,9 @@ public class Dice {
         value = (int)(Math.random()*6) + 1;
         return value;
     }
-
+    public int getValue() {
+        return value;
+    }
     public String getImagePath() {
         return "/com/example/crapsgame262/images/dices/dice" + value + ".png";
     }
