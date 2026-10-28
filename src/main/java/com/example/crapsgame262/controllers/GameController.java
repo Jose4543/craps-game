@@ -54,4 +54,24 @@ public class GameController {
                 )
         );
     }
+
+    @FXML
+    private void onActionHelpButton() {
+        javafx.scene.control.Alert alert =
+                new javafx.scene.control.Alert(
+                        javafx.scene.control.Alert.AlertType.INFORMATION);
+
+        alert.setTitle("Craps Game - Ayuda");
+        alert.setHeaderText("Instrucciones del juego");
+        alert.setContentText(
+                "Se juega con dos dados.\n\n" +
+                        "En el primer lanzamiento, 7 u 11 significa ganar; " +
+                        "2, 3 o 12 significa perder es un Craps.\n\n" +
+                        "Si sale otro número, ese será tu punto. " +
+                        "Debes repetirlo antes de sacar un 7 para ganar."
+        );
+
+        alert.getDialogPane().setPrefSize(480, 350);
+        alert.showAndWait();
+    }
 }
